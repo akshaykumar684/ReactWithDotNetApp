@@ -5,6 +5,8 @@ const CandidateItem = (props) => {
       <td>{props.fullname}</td>
       <td>{props.mobile}</td>
       <td>{props.age}</td>
+      <td>{props.email}</td>
+      <td>{props.address}</td>
     </tr>
   );
 };

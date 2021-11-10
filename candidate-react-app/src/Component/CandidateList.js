@@ -13,6 +13,8 @@ const CandidateList = () => {
           <th>First Name</th>
           <th>Mobile</th>
           <th>Age</th>
+          <th>Email</th>
+          <th>Address</th>
         </tr>
       </thead>
       <tbody>
@@ -23,6 +25,8 @@ const CandidateList = () => {
             fullname={candidate.fullName}
             mobile={candidate.mobile}
             age={candidate.age}
+            email={candidate.email}
+            address={candidate.address}
           />
         ))}
       </tbody>
