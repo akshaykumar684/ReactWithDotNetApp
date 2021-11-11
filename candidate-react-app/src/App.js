@@ -8,6 +8,7 @@ import { candidateAction } from "./store/candidate-State";
 import api from "./axios/axiosConfig";
 import { useSelector } from "react-redux";
 import Toasts from "./Component/UI/Toast";
+import CandidateModalForm from "./Component/UI/CandidateModalForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function App() {
   return (
     <div>
       <Toasts Data={toastData} />
+      <CandidateModalForm />
       <Container>
         <Row>
           <Col>

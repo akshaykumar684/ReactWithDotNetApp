@@ -2,6 +2,7 @@ import { Button } from "react-bootstrap";
 import api from "../axios/axiosConfig";
 import { useDispatch } from "react-redux";
 import { candidateAction } from "../store/candidate-State";
+import { candidateModalAction } from "../store/CandidateModal-State";
 import { toastAction } from "../store/toast-State";
 const CandidateItem = (props) => {
   const dispatch = useDispatch();
@@ -29,6 +30,10 @@ const CandidateItem = (props) => {
         console.log(res);
       });
   };
+
+  const editCandidateHandler = () => {
+    dispatch(candidateModalAction.showModal(props.id));
+  };
   return (
     <tr>
       <td>{props.index}</td>
@@ -40,6 +45,9 @@ const CandidateItem = (props) => {
       <td>
         <Button variant="danger" onClick={deleteCandidateHandler}>
           Delete
+        </Button>
+        <Button variant="primary" onClick={editCandidateHandler}>
+          Edit
         </Button>
       </td>
     </tr>
