@@ -43,11 +43,15 @@ const CandidateItem = (props) => {
       <td>{props.email}</td>
       <td>{props.address}</td>
       <td>
+        <Button
+          variant="primary"
+          onClick={editCandidateHandler}
+          style={{ margin: "1em" }}
+        >
+          Edit
+        </Button>
         <Button variant="danger" onClick={deleteCandidateHandler}>
           Delete
-        </Button>
-        <Button variant="primary" onClick={editCandidateHandler}>
-          Edit
         </Button>
       </td>
     </tr>
