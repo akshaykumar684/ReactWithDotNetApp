@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { candidateAction } from "../store/redux-store";
+import { candidateAction } from "../store/candidate-State";
 import api from "../axios/axiosConfig";
-import { toastAction } from "../store/redux-store";
+import { toastAction } from "../store/toast-State";
 
 const CandidateForm = () => {
   const dispatch = useDispatch();

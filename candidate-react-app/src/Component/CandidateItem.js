@@ -1,8 +1,8 @@
 import { Button } from "react-bootstrap";
 import api from "../axios/axiosConfig";
 import { useDispatch } from "react-redux";
-import { candidateAction } from "../store/redux-store";
-import { toastAction } from "../store/redux-store";
+import { candidateAction } from "../store/candidate-State";
+import { toastAction } from "../store/toast-State";
 const CandidateItem = (props) => {
   const dispatch = useDispatch();
   const deleteCandidateHandler = () => {

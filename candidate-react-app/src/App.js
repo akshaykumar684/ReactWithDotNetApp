@@ -4,7 +4,7 @@ import CandidateFrom from "./Component/CandidateFrom";
 import CandidateList from "./Component/CandidateList";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
-import { candidateAction } from "./store/redux-store";
+import { candidateAction } from "./store/candidate-State";
 import api from "./axios/axiosConfig";
 import { useSelector } from "react-redux";
 import Toasts from "./Component/UI/Toast";

@@ -1,6 +1,6 @@
 import { Toast, ToastContainer } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { toastAction } from "../../store/redux-store";
+import { toastAction } from "../../store/toast-State";
 const Toasts = (props) => {
   const dispatch = useDispatch();
   const { showToast, msg, isOperationSucessfull } = props.Data;
