@@ -14,6 +14,11 @@ const candidateSlice = createSlice({
     addCandidate(state, action) {
       state.candidateData.push(action.payload);
     },
+    deleteCandidate(state, action) {
+      state.candidateData = state.candidateData.filter(
+        (c) => c.id !== action.payload
+      );
+    },
   },
 });
 

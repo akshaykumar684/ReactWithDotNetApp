@@ -14,7 +14,6 @@ function App() {
       .get(`/`)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data);
           dispatch(candidateAction.initializeCandidateData(res.data));
         }
       })
