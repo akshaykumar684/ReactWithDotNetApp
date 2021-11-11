@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { candidateAction } from "../store/redux-store";
-import axios from "axios";
+import api from "../axios/axiosConfig";
 
 const CandidateForm = () => {
   const dispatch = useDispatch();
@@ -25,6 +25,9 @@ const CandidateForm = () => {
   };
 
   const ageChangeHandler = (event) => {
+    if (event.target.value === "") {
+      return;
+    }
     setAge(parseInt(event.target.value));
   };
 
@@ -35,8 +38,8 @@ const CandidateForm = () => {
   const candidateFormSubmitHandler = (event) => {
     event.preventDefault();
 
-    axios
-      .post(`http://localhost:49743/api/Candidate/`, {
+    api
+      .post(`/`, {
         fullname,
         mobile,
         email,
@@ -45,9 +48,9 @@ const CandidateForm = () => {
       })
       .then((res) => {
         console.log(res);
+        dispatch(candidateAction.addCandidate(res.data));
       })
       .catch((error) => console.log(error));
-    //dispatch(candidateAction.addCandidate(formData));
 
     setFullname("");
     setMobile("");
