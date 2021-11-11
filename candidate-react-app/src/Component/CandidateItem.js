@@ -2,6 +2,7 @@ import { Button } from "react-bootstrap";
 import api from "../axios/axiosConfig";
 import { useDispatch } from "react-redux";
 import { candidateAction } from "../store/redux-store";
+import { toastAction } from "../store/redux-store";
 const CandidateItem = (props) => {
   const dispatch = useDispatch();
   const deleteCandidateHandler = () => {
@@ -10,11 +11,23 @@ const CandidateItem = (props) => {
       .then((res) => {
         if (res.status === 204) {
           dispatch(candidateAction.deleteCandidate(props.id));
+          dispatch(
+            toastAction.showToast({
+              isOperationSucessfull: true,
+              msg: "Candidate Deleted Successfully",
+            })
+          );
         }
       })
-      .catch((res) => console.log(res));
-
-    //dispatch(candidateAction.deleteCandidate(props.id));
+      .catch((res) => {
+        dispatch(
+          toastAction.showToast({
+            isOperationSucessfull: false,
+            msg: "Something Went wrong while deleting Candidate",
+          })
+        );
+        console.log(res);
+      });
   };
   return (
     <tr>

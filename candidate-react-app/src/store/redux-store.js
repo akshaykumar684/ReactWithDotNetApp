@@ -22,10 +22,32 @@ const candidateSlice = createSlice({
   },
 });
 
+const initialToastState = {
+  isOperationSucessfull: true,
+  msg: "",
+  showToast: false,
+};
+
+const toastUISlice = createSlice({
+  name: "toastData",
+  initialState: initialToastState,
+  reducers: {
+    showToast(state, action) {
+      state.showToast = true;
+      state.isOperationSucessfull = action.payload.isOperationSucessfull;
+      state.msg = action.payload.msg;
+    },
+    hideToast(state, action) {
+      state.showToast = false;
+    },
+  },
+});
+
 const store = configureStore({
-  reducer: { candidate: candidateSlice.reducer },
+  reducer: { candidate: candidateSlice.reducer, toast: toastUISlice.reducer },
 });
 
 export default store;
 
 export const candidateAction = candidateSlice.actions;
+export const toastAction = toastUISlice.actions;
