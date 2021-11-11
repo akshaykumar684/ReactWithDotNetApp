@@ -3,8 +3,7 @@ import { Table } from "react-bootstrap";
 import CandidateItem from "./CandidateItem";
 
 const CandidateList = () => {
-  const candidateData = useSelector((state) => state.candidate);
-  console.log(candidateData);
+  const candidateData = useSelector((state) => state.candidate.candidateData);
   return (
     <Table striped bordered hover>
       <thead>
@@ -22,7 +21,7 @@ const CandidateList = () => {
           <CandidateItem
             key={index}
             index={index + 1}
-            fullname={candidate.fullName}
+            fullname={candidate.fullname}
             mobile={candidate.mobile}
             age={candidate.age}
             email={candidate.email}

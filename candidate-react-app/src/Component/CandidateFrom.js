@@ -2,13 +2,14 @@ import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { candidateAction } from "../store/redux-store";
+import axios from "axios";
 
 const CandidateForm = () => {
   const dispatch = useDispatch();
-  const [fullName, setFullname] = useState("");
+  const [fullname, setFullname] = useState("");
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
-  const [age, setAge] = useState("");
+  const [age, setAge] = useState(0);
   const [address, setAddress] = useState("");
 
   const fullNameChangeHandler = (event) => {
@@ -24,7 +25,7 @@ const CandidateForm = () => {
   };
 
   const ageChangeHandler = (event) => {
-    setAge(event.target.value);
+    setAge(parseInt(event.target.value));
   };
 
   const addressChangeHandler = (event) => {
@@ -34,16 +35,19 @@ const CandidateForm = () => {
   const candidateFormSubmitHandler = (event) => {
     event.preventDefault();
 
-    const formData = {
-      fullName,
-      mobile,
-      email,
-      age,
-      address,
-    };
-
-    console.log(formData);
-    dispatch(candidateAction.addCandidate(formData));
+    axios
+      .post(`http://localhost:49743/api/Candidate/`, {
+        fullname,
+        mobile,
+        email,
+        age,
+        address,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => console.log(error));
+    //dispatch(candidateAction.addCandidate(formData));
 
     setFullname("");
     setMobile("");
@@ -58,7 +62,7 @@ const CandidateForm = () => {
         <Form.Control
           type="text"
           placeholder="Full name"
-          value={fullName}
+          value={fullname}
           onChange={fullNameChangeHandler}
         />
       </Form.Group>

@@ -1,35 +1,18 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 
-const initialCandidateData = [
-  {
-    fullName: "Akshay",
-    mobile: "8873473129",
-    email: "akshaykumar684@gmail.com",
-    age: 14,
-    address: "Bangalore",
-  },
-  {
-    fullName: "Abhinav",
-    mobile: "8873473129",
-    email: "abhinav@gmail.com",
-    age: 14,
-    address: "Bangalore",
-  },
-  {
-    fullName: "Shashank",
-    mobile: "8873473129",
-    email: "Shashank@gmail.com",
-    age: 14,
-    address: "Bangalore",
-  },
-];
+const initialCandidateData = {
+  candidateData: [],
+};
 
 const candidateSlice = createSlice({
   name: "candidateData",
   initialState: initialCandidateData,
   reducers: {
+    initializeCandidateData(state, action) {
+      state.candidateData = action.payload;
+    },
     addCandidate(state, action) {
-      state.push(action.payload);
+      state.candidateData.push(action.payload);
     },
   },
 });
